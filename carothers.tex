@@ -1,0 +1,541 @@
+% Compiled by Wyatt Whiting
+% Problems are copied verbatim from Real Analysis by N.L. Carothers
+
+\documentclass[12pt]{amsart}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts, fullpage, nopageno, skull, mathtools, enumitem}
+
+\usepackage{graphicx}
+
+\setlength{\parindent}{0in}
+
+\def\Span{\mathrm{Span}}
+\def\diam{\mathrm{diam}}
+\def\iff{if and only if }
+
+\def\CC{{\mathbb C}}
+\def\FF{{\mathbb F}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\ZZ{{\mathbb Z}}
+\def\NN{{\mathbb N}}
+
+\def\Ecal{{\mathcal E}}
+\def\Fcal{{\mathcal F}}
+\def\Ocal{{\mathcal O}}
+\def\Ccal{{\mathcal C}}
+
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\inter}[1]{#1^\circ}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\epsilon}{\varepsilon}
+
+\begin{document}
+
+\begin{center}
+{\bf \Large Part One : Metric Spaces}
+\end{center}
+
+\hspace{10pt}
+
+{\bf Chapter 1: Calculus Review}
+
+\medskip
+
+\begin{enumerate}
+
+\item[\bf 1.1] If $A$ is a nonempty subset of $\RR$ that is bounded below, show that $A$ has a greatest lower bound.
+
+\bigskip
+
+\item[\bf 1.3] Establish the following apparently different (but "fancier") characterization of the supremum. Let $A$ be a nonempty subset of $\RR$ that is bounded above. Prove that $s=\sup A$ if and only if (i) s is an upper bound for $A$, and (ii) for every $\epsilon>0$, there is an $a\in A$ such that $a>s-\epsilon$. State and prove the corresponding result for the infimum of a nonempty subset of $\RR$ that is bounded below. 
+
+\bigskip
+
+\item[\bf 1.4] Let $A$ be a nonempty subset of $\RR$ that is bounded above. Show that there is a sequence $(x_n)$ of elements of $A$ that converges to $\sup A$. 
+
+\bigskip
+
+\item[\bf 1.6] Prove that every convergent sequence of real numbers is bounded. Moreover, if $(a_n)$ is convergent, show that $\inf_n a_n \leq \lim_{n\to\infty}a_n \leq \sup_n a_n$.
+
+\bigskip
+
+\item[\bf 1.13] Let $a_n\geq 0$ for all $n$, and let $s_n=\sum_{i=1}^n a_i$. Show that $(s_n)$ converges if and only if $(s_n)$ is bounded. 
+
+\bigskip
+
+\item[\bf 1.14] Prove that a convergent sequence is Cauchy, and that any Cauchy sequence is bounded. 
+
+\bigskip
+
+\item[\bf 1.15] Show that a Cauchy sequence with a convergent subsequence actually converges.
+
+\bigskip
+
+\item[\bf 1.17] Given real numbers $a$ and $b$, establish the following formulas: $|a+b|\leq |a|+|b|, ||a|-|b||\leq |a-b|, \max\{a,b\}=\frac12(a+b+|a-b|)$, and $\min\{a,b\}=\frac12(a+b-|a-b|)$.
+
+\bigskip
+
+\item[\bf 1.21] Let $p\geq 2$ be a fixed integer, and let $0<x<1.$ If $x$ has a finite-length base $p$ decimal expansion, that is, if $x=a_1/p+\cdots+a_n/p^n$ with $a_n\neq 0$, prove that $x$ has precisely \textit{two} base $p$ decimal expansions. Otherwise, show that the base $p$ decimal expansion for $x$ is unique. Characterize the numbers $0<x<1$ that have \textit{repeating} base $p$ decimal expansions. How about \textit{eventually repeating}? 
+
+\bigskip
+
+\item[\bf 1.24] Show that $\lim\sup_{n\to\infty}(-a_n)=-\lim\inf_{n\to\infty} a_n$.
+
+\bigskip
+
+\item[\bf 1.25] If $\lim\sup_{n\to\infty}a_n=-\infty$, show that $(a_n)$ diverges to $-\infty$. If $\lim\sup_{n\to\infty}=+\infty$, show that $(a_n)$ has a \textit{subsequence} that diverges to $+\infty$. What happens if $\lim\inf_{n\to\infty}a_n=\pm\infty$.
+
+\bigskip
+
+\item[\bf 1.26] Prove the characterization of $\lim\sup$ given above. That is, given a bounded sequence $(a_n)$, show that the number $M=\lim\sup_{n\to\infty}a_n$ satisfies $(*)$ and, conversely, that any number $M$ satisfying $(*)$ must equal $\lim\sup_{n\to\infty}a_n$. State and prove the corresponding result for $m=\lim\inf_{n\to\infty}a_n$.
+
+\bigskip
+
+\item[\bf 1.27] Prove that every sequence of real numbers $(a_n)$ has a subsequence $(a_{n_k})$ that converges to $\lim\sup_{n\to\infty}.$
+
+\bigskip
+
+\item[\bf 1.33] Show that $(x_n)$ converges to $x\in\RR$ if and only if every subsequence $(x_{n_k})$ has a \textit{further} subsequence $(x_{n_{k_l}})$ that converges to $x$. 
+
+\bigskip
+
+\item[\bf 1.37] If $(E_n)$ is a sequence of subsets of a fixed set $S$, we define $$\limsup_{n\to\infty}E_n=\bigcap_{n=1}^\infty \left(\bigcup_{k=n}^{\infty} E_k\right) \quad\text{ and }\quad \liminf_{n\to\infty}E_n=\bigcup_{n=1}^\infty\left(\bigcap_{k=n}^\infty E_k\right).$$ Show that $$\liminf_{n\to\infty}E_n\subset \limsup_{n\to\infty}E_n \text{ and that } \quad \liminf_{n\to\infty}\left(E^c_n\right)=\left(\limsup_{n\to\infty}E_n \right)^c$$.
+
+\bigskip
+
+\item[\bf 1.45] Let $f:[a,b]\to\RR$ be continuous and suppose that $f(x)=0$ whenever $x$ is rational. Show that $f(x)=0$ for every $x$ in $[a,b]$.
+
+\bigskip
+
+\item[\bf 1.46] Let $f:\RR\to\RR$ be continuous. 
+	\begin{enumerate}[label={\bf (\alph*)}]
+	\item If $f(0)>0$, show that $f(x)>0$ for all $x$ in some open interval $(-a, a)$.
+	\smallskip
+	\item If $f(x)\geq 0$ for every rational $x$, show that $f(x)\geq 0$ for all real $x$. Will this result hold with "$\leq 0$" replaced by "$>0$"? Explain.
+	\end{enumerate}
+\end{enumerate}
+
+{\bf Chapter 2: Countable and Uncountable Sets}
+
+\bigskip
+
+\begin{enumerate}
+
+\item[\bf 2.4] Show that any infinite set has a countably infinite subset.
+
+\bigskip
+
+\item[\bf 2.6] If $A$ is infinite and $B$ is countable, show that $A$ and $A\cup B$ are equivalent. [Hint: No containment relation between $A$ and $B$ is assumed here.
+
+\bigskip
+
+\item[\bf 2.13] Show that $\NN$ contains infinitely many pairwise disjoint infinite subsets. 
+
+\bigskip
+
+\item[\bf 2.15] Show that any collection of pairwise disjoint, nonempty open intervals in $\RR$ is at most countable. [Hint: Each one contains a rational!]
+
+\bigskip
+
+\item[\bf 2.21] Show that any ternary decimal of the form $0.a_1a_2\cdots a_n11$ (base 3), i.e., any finite-length decimal ending in two (or more) 1s, is \textit{not} an element of $\Delta$.
+
+\bigskip
+
+\item[\bf 2.22] Show that $\Delta$ contains no (nonempty) open intervals. In particular, show that if $x, y\in\Delta$ with $x<y$, then there is some $z\in [0,1]\setminus\Delta$ with $x<z<y$. (It follows from this that $\Delta$ is \textit{nowhere dense}, which is another way of saying that $\Delta$ is "small").
+
+\bigskip
+
+\item[\bf 2.23] The endpoints of $\Delta$ are those points in $\Delta$ having a finite-length base 3 decimal expansion (not necessarily in the proper form), that is, all the points in $\Delta$ of the form $a/3^n$ for some integers $n$ and $0\leq a\leq 3^n$. Show that the endpoints of $\Delta$ other than 0 and 1 can be written as $0.a_1a_2\cdots a_{n+1}$ (base 3), where each $a_k$ is 0 or 2, except $a_{n+1}$, which is either 1 or 2. That is, the discarded "middle third" intervals are of the form $(0.a_1a_2\cdots a_n 1, 0.a_1a_2\cdots a_n 2)$, where both entries are points of $\Delta$ written in base $3$.
+
+\bigskip
+
+\item[\bf 2.26] Let $f:\Delta\to [0,1]$ be the Cantor function (defined above) and let $x, y\in\Delta$ with $x<y$. Show that $f(x)\leq f(y)$. If $f(x)=f(y)$, show that $x$ has two distinct binary decimal expansions. Finally, show that $f(x)=f(y)$ if and only if $x$ and $y$ are "consecutive" endpoints of the form $x=0.a_1a_2\cdots a_n1$ and $y=0.a_1a_2\cdots a_n 2$ (base 3).
+
+\bigskip
+
+\item[\bf 2.29] Prove that the extended cantor function $f:[0,1]\to [0,1]$ (as defined above) is increasing. [Hint: Consider cases.]
+
+\bigskip
+
+\end{enumerate}
+
+{\bf Chapter 3: Metrics and Norms}
+
+\begin{enumerate}
+
+\item[\bf 3.2] If $d$ is a metric on $M$, show that $|d(x,z)-d(z,y)|\leq d(x,y)$ for any $x,y,z\in M$.
+
+\bigskip
+
+\item[\bf 3.5] There are other, albeit less natural, choices for a metric on $\RR$. For instance, check that $\rho(a, b)=\sqrt{|a-b|}$, $\sigma(a,b)=|a-b|/(1+|a-b|)$, and $\tau(a,b)=\min\{|a-b|,1\}$ each define metrics on $\RR$. [Hint: To show that $\sigma$ is a metric, you might first show that the function $F(t)=t/(1+t)$ is increasing and satisfies $F(s+t)\leq F(s)+F(t)$ for $s,t\geq 0$. A similar approach will also work for $\rho$ and $\tau$.]
+
+\bigskip
+
+\item[\bf 3.6] If $d$ is any metric on $M$, show that $\rho(a, b)=\sqrt{d(x,y)}$, $\sigma(a,b)=d(x,y)/(1+d(x,y))$, and $\tau(a,b)=\min\{d(x,y),1\}$ are also metrics on $M$. [Hint: $\sigma(x,y)=F(d(x,y))$, where $F$ is as in Exercise 5.]
+
+\bigskip
+
+\item[\bf 3.14] We say that a subset $A$ of a metric space $M$ is {\bf bounded} if there is some $x_0\in M$ and some constant $C<\infty$ such that $d(a, x_0)\leq C$ for all $a\in A$. Show that a finite union of bounded sets is again bounded.
+
+\bigskip
+
+\item[\bf 3.15] We define the {\bf diameter} of a nonempty subset $A$ of $M$ by $\diam(A)=\sup\{d(a,b) : a,b\in A\}$. Show that $A$ is bounded if and only if $\diam(A)$ is finite. 
+
+\bigskip
+
+\item[\bf 3.18] Show that $\|x\|_\infty\leq \|x\|_2\leq \|x\|_1$ for any $x\in \RR^n$. Also check that $\|x\|_1\leq n\|x\|_\infty$ and $\|x\|_1 \leq \sqrt n\|x\|_2$.
+
+\bigskip
+
+\item[\bf 3.29] Prove that $A$ is bounded if and only if $\diam(A)<\infty$.
+
+\bigskip
+
+\item[\bf 3.30] If $A\subset B$, show that $\diam(A)\leq \diam(B)$.
+
+\bigskip
+
+\item[\bf 3.32] In a normed vector space $(V, \|\cdot\|)$ show that $B_r(x)=x+B_r(0)=\{ x+y:\|y\|<r \}$ and that $B_r(0)=rB_1(0)=\{rx:\|x\|<1\}$.
+
+\bigskip
+
+\item[\bf 3.34] If $x_n\to x$ in $(M,d)$, show that $d(x_n,y)\to d(x,y)$ for any $y\in M$. More generally, if $x_n\to x$ and $y_n\to y$, show that $d(x_n,y_n)\to d(x,y)$.
+
+\bigskip
+
+\item[\bf 3.36] A convergent sequence is Cauchy, and a Cauchy sequence is bounded (that is, the set $\{x_n : n\geq 1\}$ is bounded).
+
+\bigskip
+
+\item[\bf 3.37] A Cauchy sequence with a convergent subsequence converges.
+
+\bigskip
+
+\item[\bf 3.39] If every subsequence of $(x_n)$ has a further subsequence that converges to $x$, then $(x_n)$ converges to $x$.
+
+\bigskip
+
+\item[\bf 3.42] Two metrics $d$ and $\rho$ on a set $M$ are said to be {\bf equivalent} if they generate the same convergent sequences; that is, $d(x_n, x)\to 0$ \iff $\rho(x_n,x)\to 0$. If $d$ is any metric on $M$, show that the metrics $\rho, \sigma$, and $\tau$, defined in Exercise 6, are all equivalent to $d$.
+
+\bigskip
+
+\item[\bf 3.43] Show that the usual metric on $\NN$ is equivalent to the discrete metric. Show that any metric on a \textit{finite} set is equivalent to the discrete metric. 
+
+\bigskip
+
+\item[\bf 3.44] Show that the metrics induced by $\|\cdot\|_1$, $\|\cdot\|_2$, and $\|\cdot\|_\infty$ are all equivalent. [Hint: See Exercise 18.]
+
+\bigskip
+
+\item[\bf 3.46] Given two metric spaces $(M,d)$ and $(N, \rho)$, we can define a metric on the product $M\times N$ in a variety of ways. Our only requirement is that a sequence of pairs $(a_n, x_n)$ in $M\times N$ should converge precisely when both coordinate sequences $(a_n)$ and $(x_n)$ (in $(M, d)$ and $(N,\rho)$ respectively). Show that each of the following define metrics on $M\times N$ that enjoy this property and hat all three are equivalent: 
+\medskip
+\begin{equation*}
+\begin{split}
+d_1\left( (a,x),(b,y) \right) &= d(a,b)+\rho(x,y), \\
+d_2\left( (a,x),(b,y) \right) &= \left(d(a,b)^2+\rho(x,y)^2\right)^{1/2}, \\
+d_\infty\left( (a,x),(b,y) \right) &= \max\{ d(a,b),\rho(x,y) \}.
+\end{split}
+\end{equation*}
+
+\bigskip
+\end{enumerate}
+
+{\bf Chapter 4: Open Sets and Closed Sets}
+
+\begin{enumerate}
+
+\item[\bf 4.3] Some authors say that two metrics $d$ and $\rho$ on a set $M$ are equivalent if they generate the same open sets. Prove this. (Recall that we have defined equivalence to mean that $d$ and $\rho$ generate the same convergent sequences. See Exercise 3.42.)
+
+\bigskip
+
+\item[\bf 4.5] Let $f:\RR\to\RR$ be continuous. Show that $\{x:f(x)>0\}$ is an open subset of $\RR$ and that $\{x:f(x)=0\}$ is a closed subset of $\RR$.
+
+\bigskip
+
+\item[\bf 4.8] Show that every open interval (and hence every open set) in $\RR$ is a countable intersection of open intervals. 
+
+\bigskip
+
+\item[\bf 4.11] Let $e^{(k)}=(0,\cdots,0,1,0,\cdots)$, where the $k$th entry is 1 and the rest are 0s. Show that $\{e^{(k)} : k\geq 1\}$ is closed as a subset of $l_1$.
+
+\bigskip
+
+\item[\bf 4.17] Show that $A$ is open \iff $A^\circ=A$ and that $A$ is closed \iff $\overline A = A$.
+
+\bigskip
+
+\item[\bf 4.18] Given a nonempty bounded subset $E$ of $\RR$, show hat $\sup E$ and $\inf E$ are elements of $\overline E$. Thus $\sup E$ and $\inf E$ are elements of $E$ whenever $E$ is \textit{closed}.
+
+\bigskip
+
+\item[\bf 4.19] Show that $\diam(A)=\diam\left(\overline A\right)$
+
+\bigskip
+
+\item[\bf 4.33] Let $A$ be a subset of $M$. A point $x\in M$ is called a {\bf limit point} of $A$ if every neighborhood of $x$ contains a point of $A$ that is different from $x$ itself, that is, if $(B_\epsilon(x)\setminus\{x\})\cap A\neq\emptyset$ for every $\epsilon>0$. If $x$ is a limit point of $A$, show that every neighborhood of $x$ contains infinitely many points of $A$.
+
+\bigskip
+
+\item[\bf 4.34] Show that $x$ is a limit point of $A$ \iff there is a sequence $(x_n)$ in $A$ such that $x_n\to x$ and $x_n\neq x$ for all $n$.
+
+\bigskip
+
+\item[\bf 4.46] A set $A$ is said to be {\bf dense} in $M$ (or, as some authors say, \textit{everywhere dense}) if $\overline A=M$. For example, both $\QQ$ and $\RR\setminus\QQ$ are dense in $\RR$. Show that $A$ is dense in $M$ \iff any of the following hold: 
+\medskip
+	\begin{enumerate}[label={\bf (\alph*)}]
+	\item Every point in $M$ is the limit of a sequence from $A$.
+	\medskip
+	\item $B_\epsilon(x)\cap A\neq \emptyset$ for every $x\in M$ and every $\epsilon>0$.
+	\medskip
+	\item $U\cap A\neq \emptyset$ for every nonempty open set $U$.
+	\medskip
+	\item $A^c$ has an empty interior. 
+	\end{enumerate}
+
+\bigskip
+
+\item[\bf 4.48] A metric space is called {\bf separable} if it contains a countable dense subset. Find examples of countable dense sets in $\RR$, in $\RR^2$, and in $\RR^n$.
+
+\bigskip
+
+\item[\bf 4.61] Complete the proof of Proposition 4.13.
+
+\bigskip
+
+\item[\bf 4.62] Suppose that $A$ is open in $(M, d)$ and that $G\subset A$. Show that $G$ is open in $A$ \iff $G$ is open in $M$. Is the result still true if "open" is replaced everywhere by "closed"? Explain. 
+
+\bigskip
+
+\end{enumerate}
+
+{\bf Chapter 5: Continuity}
+
+\begin{enumerate}
+
+\item[\bf 5.1] Given a function $f:S\to T$ and sets $A,B\subset S$ and $C,D\subset T$, establish the following: 
+	\begin{enumerate}[label={\bf (\roman*)}]
+	\item $A\subset f^{-1}\left(f(A)\right)$, with equality for all $A$ \iff $f$ is one-to-one.
+	\medskip
+	\item $f\left(f^{-1}(C)\right)\subset C$, with equality for all $C$ \iff $f$ is onto.
+	\medskip
+	\item $f(A\cup B)=f(A)\cup f(B)$.
+	\medskip
+	\item $\inv f(C\cup D)=\inv f(C)\cup \inv f(D)$.
+	\medskip
+	\item $f(A\cap B)\subset f(A)\cap f(B)$, with equality for all $A$ and $B$ if and only if $f$ is one-to-one.
+	\medskip
+	\item $\inv f(C\cap D)=\inv f(C)\cap \inv f(D)$.
+	\medskip
+	\item $f(A)\setminus f(B)\subset f(A\setminus B)$.
+	\medskip
+	\item $\inv f(C\setminus D)=\inv f(C) \setminus \inv f(D)$.
+	\end{enumerate}
+
+\bigskip
+
+\item[\bf 5.2] Given a subset $A$ of some "universal" set $S$, we define $\chi_A : S\to \RR$, the {\bf characteristic function} of $A$, by $\chi_A(x)=1$ if $x\in A$ and $\chi_A(x)=0$ if $x\not\in A$. Prove or disprove the following formulas: $\chi_{A\cup B}=\chi_A+\chi_B$, $\chi_{A\cap B}=\chi_A\cdot\chi_B$, $\chi_{A\setminus B}=\chi_A-\chi_B$. What corrections are necessary? 
+
+\bigskip
+
+\item[\bf 5.8] Let $f:\RR\to\RR$ be continuous.
+	\begin{enumerate}[label={\bf (\alph*)}]
+	\item If $f(0)>0$, show that $f(x)>0$ for all $x$ in some interval $(-a, a)$.
+	\medskip
+	\item If $f(x)\geq 0$ for every rational $x$, show that $f(x)\geq 0$ for all real $x$. Will this result hold with "$\geq 0$" replaced by "$>0$"? Explain. 
+	\end{enumerate}
+	
+\bigskip
+
+\item[\bf 5.9] Let $A\subset M$. Show that $f:(A,d)\to(N,\rho)$ is continuous at $a\in A$ if and only if, given $\epsilon>0$, there is a $\delta>0$ such that $\rho(f(x),f(a))<\epsilon$ whenever $d(x, a)<\delta$ \textit{and} $x\in A$. We paraphrase this statement by saying "$f$ has a point of continuity relative to $A$."
+
+\bigskip
+
+\item[\bf 5.17] Let $f, g:(M,d)\to(N,\rho)$ be continuous, and let $D$ be a dense subset of $M$. If $f(x)=g(x)$ for all $x\in D$, show that $f(x)=g(x)$ for all $x\in M$. If $f$ is onto, show that $f(D)$ is dense in $N$.
+
+\bigskip
+
+\item[\bf 5.19] A function $f:\RR\to\RR$ is said to satisfy a {\bf Lipschitz condition} if there is a constant $K<\infty$ such that $|f(x)-f(y)|\leq K|x-y|$ for all $x,y\in\RR$. More economically, we may say that $f$ is Lipschitz (or Lipschitz with constant $K$ if a particular constant seems to matter). Show that $\sin x$ is Lipschitz with constant $K=1$. Prove that a Lipschitz function is (uniformly) continuous. 
+
+\bigskip
+
+\item[\bf 5.20] If $d$ is a metric on $M$, show that $|d(x,z)-d(y,z)|\leq d(x,y)$ and conclude that the function $f(x)=d(x,z)$ is continuous on $M$ for any fixed $x\in M$. This says that $d(x,y)$ is \textit{separately continuous} \--- continuous in each variable separately. 
+
+\bigskip
+
+\item[\bf 5.25] A function $f:(M,d)\to(N,\rho)$ is called {\bf Lipschitz} if there is a constant $K<\infty$ such that $\rho(f(x),f(y))\leq Kd(x,y)$ for all $x,y\in M$. Prove that a Lipschitz mapping is continuous. 
+
+\bigskip
+
+\item[\bf 5.30] Let $f:(M,d)\to(N,\rho)$. Prove that $f$ is continuous \iff $f\left(\overline A\right)\subset\overline{f(A)}$ for every $A \subset M$ \iff $\inv f\left(\inter B\right)\subset \inter{\left( \inv f (B)\right)}$ for every $B\subset N$. Give an example of a continuous $f$ such that $f\left(\overline A\right)\neq \overline{f(A)}$ for some $A\subset M$. 
+
+\bigskip
+
+\item[\bf 5.34] Show that $d$ is continuous on $M\times M$, where $M\times M$ is supplied with "the" product metric (see Exercise 3.46). This says that $d$ is \textit{jointly} continuous, that is, continuous as a function of two variables. [Hint: If $x_n\to x$ and $y_n\to y$, show that $d(x_n,y_n)\to d(x,y).$]
+
+\bigskip
+
+\item[\bf 5.36] Suppose that we are given a point $x$ and a sequence $(x_n)$ in a metric space $M$, and suppose that $f(x_n)\to f(x)$ for every continuous, real-valued function $f$ on $M$. Does it follow that $x_n\to x$ in $M$? Explain.
+
+\bigskip
+
+\item[\bf 5.46] Show that every metric space is homeomorphic to one of finite diameter. [Hint: Every metric is equivalent to a bounded metric.]
+
+\bigskip
+
+\item[\bf 5.48] Prove that $\RR$ is homeomorphic to $(0,1)$ and that $(0,1)$ is homeomorphic to $(0,\infty)$. Is $\RR$ \textit{isometric} to $(0,1)$? to $(0,\infty)$? Explain.
+
+\bigskip
+
+\item[\bf 5.52] Prove Theorem 5.5.
+
+\bigskip
+
+\item[\bf 5.53] Suppose that we are given a point $x$ and a sequence $(x_n)$ in a metric space $M$, and suppose that $f(x_n)\to f(x)$ for every continuous real-valued function $f$ on $M$. Prove that $x_n\to x$ in $M$.
+
+\bigskip
+
+\item[\bf 5.54] Let $f:(M,d)\to (N,\rho)$ be one-to-one and onto. Prove that the following are equivalent: (i) $f$ is homeomorphism and (ii) $g : N\to \RR$ is continuous \iff $g\circ f:M\to\RR$ is continuous. [Hint: Use the characterization given in Theorem 5.5(ii).]
+
+\bigskip
+
+\item[\bf 5.56] Let $f:(M,d)\to(N,\rho)$. 
+	\begin{enumerate}[label={\bf (\roman*)}]
+	\item We say that $f$ is an {\bf open} map if $f(U)$ is open in $N$ whenever $U$ is open in $M$; that is, $f$ maps open sets to open sets. Give examples of a continuous map that is not open and an open map that is not continuous. [Hint: Please note that the definition depends on the target space $N$.]
+	\medskip
+	\item Similarly, $f$ is called {\bf closed} if it maps closed sets to closed sets. Give examples of a continuous map that is not closed and a closed map that is not continuous. 
+	\end{enumerate}
+
+
+\bigskip
+
+\item[\bf 5.57] Let $f:(M,d)\to(N,\rho)$ be one-to-one and onto. Show that the following are equivalent: (i) $f$ is open; (ii) $f$ is closed; and (iii) $\inv f$ is continuous. Consequently, $f$ is a homeomorphism \iff both $f$ and $\inv f$ are open (closed). 
+
+\bigskip
+
+\end{enumerate}
+{\bf Chapter 6: Connectedness}
+
+\begin{enumerate}
+\item[\bf 6.5] If $E$ and $F$ are connected subsets of $M$ with $E\cap F\neq\emptyset$, show that $E\cup F$ is connected.
+
+\bigskip
+
+\item[\bf 6.6] More generally, if $\Ccal$ is a collection of connected subsets of $M$, all having a point in common, prove that $\bigcup \Ccal$ is connected. Use this to give another proof that $\RR$ is connected. 
+
+\bigskip
+
+\item[\bf 6.7] If every pair of points in $M$ is contained in some connected set, show that $M$ is itself connected. 
+
+\bigskip
+
+\item[\bf 6.9] If $A\subset B\subset \overline A \subset M$, and if $A$ is connected, show that $B$ is connected. In particular, $\overline A$ is connected.
+
+\bigskip
+
+\item[\bf 6.13] If $f:[a,b]\to[a,b]$ is continuous, show that $f$ has a fixed point: that is, show that there is some point $x$ in $[a,b]$ with $f(x)=x$.
+
+\bigskip
+
+\end{enumerate}
+
+{\bf Chapter 7: Completeness}
+
+\begin{enumerate}
+
+\item[\bf 7.1] If $A\subset B\subset M$, and if $B$ is totally bounded, show that $A$ is totally bounded.
+
+\bigskip
+
+\item[\bf 7.2] Show that a subset $A$ of $\RR$ is totally bounded \iff it is bounded. In particular, if $I$ is a closed, bounded interval in $\RR$ and $\epsilon>0$, show that $I$ can be covered by finitely many closed subintervals $J_1,\cdots,J_n$, each of length at most $\epsilon$.
+
+\bigskip
+
+\item[\bf 7.5] Prove that $A$ is totally bounded \iff $\overline A$ is totally bounded.
+
+\bigskip
+
+\item[\bf 7.9] Give an example of a closed bounded subset of $l_\infty$ that is not totally bounded.
+
+\bigskip
+
+\item[\bf 7.10] Prove that a totally bounded metric space $M$ is separable. [Hint: for each $n$, let $D_n$ be a finite $(1/n)$-net for $M$. Show that $D=\bigcup_{n-1}^\infty D_n$ is a countable dense set.]
+
+\bigskip
+
+\item[\bf 7.12] Let $A$ be a subset of an arbitrary metric space $(M,d)$. If $(A,d)$ is complete, show that $A$ is closed in $M$.
+
+\bigskip
+
+\item[\bf 7.16] Prove that $\RR^n$ is complete under any of the norms $\|\cdot\|_1, \|\cdot\|_2$, or $\|\cdot\|_\infty$. [This is interesting because completeness is not usually preserved by the mere equivalence of \textit{metrics}. Here we use the fact that all of the metrics involved are generated by \textit{norms}. Specifically, we need the norms in question to be equivalent as functions: $\|\cdot\|_\infty\leq \|\cdot\|_2\leq\|\cdot\|_1\leq n\|\cdot\|_\infty$. As we will see later, \textit{any} two norms on $\RR^n$ are comparable in this way.]
+
+\bigskip
+
+\item[\bf 7.18] Fill in the details of the proofs that $l_1$ and $l_\infty$ are complete.
+
+\bigskip
+
+\item[\bf 7.26] Just as with the nested interval theorem, it is essential that the sets $F_n$ used in the nested set theorem be closed and bounded. Why? Is the condition $\diam(F_n)\to 0$ really necessary? Explain. 
+
+\bigskip
+
+\item[\bf 7.27] Note that the version of the Bolzano-Weierstrass theorem given in Theorem 7.11 replaced boundedness with total boundedness. Is this really necessary? Explain.
+
+\bigskip
+
+\end{enumerate}
+
+{\bf Chapter 8: Compactness}
+
+\begin{enumerate}
+
+\item[\bf 8.1] If $K$ is a nonempty compact subset of $\RR$, show that $\sup K$ and $\inf K$ are elements of $K$.
+
+\bigskip
+
+\item[\bf 8.2] Let $E=\{x\in\QQ : 2<x^2<3\}$, considered as a subset of $\QQ$ (with its usual metric). Show hat $E$ is closed and bounded but \textit{not} compact. 
+
+\bigskip
+
+\item[\bf 8.17] If $M$ is compact, show that $M$ is also separable. 
+
+\bigskip
+
+\item[\bf 8.20] Let $E$ be a noncompact subset of $\RR$. Find a continuous function $f:E\to\RR$ that is (i) not bounded; (ii) bounded but has no maximum value. 
+
+\bigskip
+
+\item[\bf 8.23] Suppose that $M$ is compact and that $f:M\to N$ is continuous, one-to-one, and onto. Prove that $f$ is a homeomorphism. 
+
+\bigskip
+
+\item[\bf 8.30] Prove Lemma 8.8.
+
+\bigskip
+
+\item[\bf 8.44] Show that any Lipschitz map $f:(M,d)\to (N,\rho)$ is uniformly continuous. In particular, any isometry is uniformly continuous. 
+
+\bigskip
+
+\item[\bf 8.48] Prove that a uniformly continuous map sends Cauchy sequences into Cauchy sequences. 
+
+\bigskip
+
+\item[\bf 8.54] Let $E$ be a bounded, noncompact subset of $\RR$. Show that there is a continuous function $f:E\to\RR$ that is not uniformly continuous. 
+
+\bigskip
+
+\item[\bf 8.55] Give an example of a bounded continuous map $f:\RR\to\RR$ that is not uniformly continuous. Can an unbounded continuous function $f:\RR\to\RR$ be uniformly continuous? Explain.
+
+\bigskip
+
+\item[\bf 8.57] A function $f:\RR\to\RR$ is said to satisfy a \textit{Lipschitz condition of order} $\alpha$, where $\alpha>0$, if there is a constant $K<\infty$ such that $|f(x)-f(y)|\leq K|x-y|^\alpha$ for all $x,y$. Prove that such a function is uniformly continuous. 
+
+\bigskip
+
+\item[\bf 8.58] Show that any function $f:\RR\to\RR$ having a bounded derivative is Lipschitz of order 1. [Hint: Use the mean value theorem.]
+
+\bigskip
+
+\end{enumerate}
+\end{document}
